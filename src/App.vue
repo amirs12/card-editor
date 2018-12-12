@@ -4,7 +4,8 @@
       <div class="type-title">Type to create cards</div>
       <CharactersInput />
       <section class="menus-container">
-        <ColorsMenu />
+        <ColorsMenu @applyColorPalette="applyColorPallete($event)" />
+        <div>{{colorPalette.title}}</div>
         <BgMenu />
       </section>
       <section class="preview-box">
@@ -30,6 +31,14 @@ export default {
     BgMenu,
     Cards,
     SaveButton
+  },
+  data: () => ({
+    colorPalette: {title: "text"}
+  }),    
+  methods: {
+    applyColorPallete: function(palette) {
+      this.colorPalette = palette;
+    }
   }
 }
 </script>

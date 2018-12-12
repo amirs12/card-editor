@@ -11,7 +11,7 @@
       <li 
         v-for="(palette, index) in palettes" 
         v-bind:key="index"
-        v-on:click="selectPalette(palette)"
+        @click="selectPalette(palette)"
       >
         <div class="palette-title">{{palette.title}}</div>
         <Swatch :swatches="palette.swatches"/>
@@ -69,6 +69,7 @@ export default {
     selectPalette(palette) {
       this.selectedPalette = palette;
       this.isMenuOpen = false;
+      this.$emit('applypalette', palette)
     }
   }
 }
