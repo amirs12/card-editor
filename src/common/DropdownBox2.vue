@@ -1,17 +1,11 @@
 <template>
-  <div class="dropdown-box">
-    <div class="selected-li-container">
-      <div class="selected-li" v-on:click="openDropOptions()">
-        {{selectedPalette.title}}
-        <i class="fas fa-caret-down"></i>
-      </div>
-      <Swatch :swatches="selectedPalette.swatches"/>
-    </div>  
-    <ul class="palettes" v-if="isMenuOpen === true">
+  <div id="dropdown-box" class="dropdown-box">
+    <div class="selected-li">{{selectedPalette.title}}</div>
+    <ul class="palettes">
       <li 
         v-for="(palette, index) in palettes" 
         v-bind:key="index"
-        v-on:click="selectPalette(palette)"
+        @click="selectedPalette = pallete"
       >
         <div class="palette-title">{{palette.title}}</div>
         <Swatch :swatches="palette.swatches"/>
@@ -21,19 +15,19 @@
 </template>
 
 <script>
-import Swatch from './Swatch.vue'
 
-export default {
-  name: 'DropdownBox',
+import Swatch from './Swatch.vue'
+import Vue from 'vue'
+
+Vue.component('dropdown-box', DropdownBox)
+
+var DropdownBox = new Vue({
+  el: '#dropdown-box',
   components: {
     Swatch
   },
-  data: () => ({
-    isMenuOpen: false,
-    selectedPalette: {
-      title: "Dark Greys",
-      swatches: ["#111111", "#171717", "#222222", "#282828", "#333333"]
-    },
+  data: {
+    selectedPalette: {},
     palettes: [
       {
         title: "Light Neutrals",
@@ -60,18 +54,10 @@ export default {
         swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
       }
     ]
-  }),
-  methods: {
-    openDropOptions() {
-      this.isMenuOpen = true;
-    },
-
-    selectPalette(palette) {
-      this.selectedPalette = palette;
-      this.isMenuOpen = false;
-    }
   }
-}
+})
+
+export default DropdownBox
 </script>
 
 <style>
@@ -82,25 +68,11 @@ export default {
   border: solid 1px black;
 }
 
-.selected-li-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;  
-}
-
 .selected-li {
-  display: flex;
-  justify-content: space-between;
   padding-top: 6px;
   padding-left: 10px;
   font-size: 10px;
   color: black;
-}
-
-.fa-caret-down {
-  padding-right: 8px;
-  font-size: 0.9rem;
 }
 
 .palettes {
@@ -111,6 +83,7 @@ export default {
   color: black;
   background-color: white;
   border: solid 1px black;
+  display: none;
 }
 
 .palettes>li {
@@ -122,5 +95,13 @@ export default {
 .palette-title {
   padding-top: 6px;
   padding-left: 10px;
+}
+
+.dropdown-box:hover .palettes {
+    display: block;
+}
+
+.dropdown-box:hover .selected-li {
+    display: none;
 }
 </style>

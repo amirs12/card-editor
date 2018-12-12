@@ -50,6 +50,7 @@ export default {
   flex-direction: column;
   align-items: center;
   background-color: #4C4C4C;
+  border-radius: 2%;
 }
 
 .type-title {
@@ -64,5 +65,10 @@ export default {
   height: 24px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 26px;
+}
+
+.preview-box {
+  width: 85%;
 }
 </style>
