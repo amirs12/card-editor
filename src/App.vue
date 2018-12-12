@@ -1,28 +1,68 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="app">
+    <article class="card-editor-box">
+      <div class="type-title">Type to create cards</div>
+      <CharactersInput />
+      <section class="menus-container">
+        <ColorsMenu />
+        <BgMenu />
+      </section>
+      <section class="preview-box">
+        <Cards />
+      </section>
+      <SaveButton />
+    </article>  
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CharactersInput from './components/CharactersInput.vue'
+import ColorsMenu from './components/ColorsMenu.vue'
+import BgMenu from './components/BgMenu.vue'
+import Cards from './components/Cards.vue'
+import SaveButton from './components/SaveButton.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    CharactersInput,
+    ColorsMenu,
+    BgMenu,
+    Cards,
+    SaveButton
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.app {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-editor-box {
+  width: 444px;
+  height: 455px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #4C4C4C;
+}
+
+.type-title {
+  margin: 16px 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: white;
+}
+
+.menus-container {
+  width: 85%;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
