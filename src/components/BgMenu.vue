@@ -1,7 +1,7 @@
 <template>
   <div class="bg-menu">
     <div class="bg-menu-title">BG</div>
-    <DropdownBox />
+    <DropdownBox @applypalette="applyBgPalette($event)"/>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   name: 'BgMenu',
   components: {
     DropdownBox
+  },
+  methods: {
+    applyBgPalette: function(palette) {
+      this.$emit('applyBgPalette', palette);
+    }
   }
 }
 </script>

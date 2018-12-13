@@ -2,7 +2,6 @@
   <div class="colors-menu">
     <div class="colors-menu-title">Colors</div>
     <DropdownBox @applypalette="applyColorPalette($event)"/>
-    <div>{{midP.title}}</div>
   </div>
 </template>
 
@@ -14,12 +13,8 @@ export default {
   components: {
     DropdownBox
   },
-  data: () => ({
-    midP: { title: 'mid' }
-  }),
   methods: {
     applyColorPalette: function(palette) {
-      this.midP = palette;
       this.$emit('applyColorPalette', palette);
     }
   }

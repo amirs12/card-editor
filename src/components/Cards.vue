@@ -1,10 +1,13 @@
 <template>
   <ul class="cards">
-    <li v-for="(card, index) in cards" v-bind:key="index" class="card">
+    <li v-for="(char, index) in chars" v-bind:key="index" class="card">
       <div 
         class="card-design" 
-        :style="{'background-color': card.bg, 'color': card.color}"
-      >{{card.char}}</div>
+        :style="{
+          'background-color': bgPalette.swatches[index%5], 
+          'color': colorPalette.swatches[index%5]
+        }"
+      >{{char}}</div>
     </li>
   </ul> 
 </template>
@@ -12,49 +15,22 @@
 <script>
 export default {
   name: 'Cards',
+  props:{
+    chars:{
+      required:true,
+      type:Array
+    },
+    colorPalette:{
+      required:true,
+      type:Object
+    },
+    bgPalette:{
+      required:true,
+      type:Object
+    }
+  },
   data: () => ({
-    cards: [
-      {
-        bg: 'yellow',
-        color: 'black',
-        char: 'A'
-      },
-      {
-        bg: 'white',
-        color: 'blue',
-        char: 'A'
-      },
-      {
-        bg: 'white',
-        color: 'blue',
-        char: 'A'
-      },
-      {
-        bg: 'white',
-        color: 'blue',
-        char: 'A'
-      },
-      {
-        bg: 'white',
-        color: 'blue',
-        char: 'A'
-      },
-      {
-        bg: 'white',
-        color: 'blue',
-        char: 'A'
-      },
-      {
-        bg: 'pink',
-        color: 'red',
-        char: '%'
-      },
-      {
-        bg: 'white',
-        color: 'black',
-        char: 'B'
-      }
-    ]
+    
   })
 }
 </script>

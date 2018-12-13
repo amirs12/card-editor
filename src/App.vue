@@ -4,12 +4,15 @@
       <div class="type-title">Type to create cards</div>
       <CharactersInput />
       <section class="menus-container">
-        <ColorsMenu @applyColorPalette="applyColorPallete($event)" />
-        <div>{{colorPalette.title}}</div>
-        <BgMenu />
+        <ColorsMenu @applyColorPalette="applyColorPalette($event)" />
+        <BgMenu @applyBgPalette="applyBgPalette($event)"/>
       </section>
       <section class="preview-box">
-        <Cards />
+        <Cards 
+          :chars="chars" 
+          :colorPalette="colorPalette" 
+          :bgPalette="bgPalette"
+        />
       </section>
       <SaveButton />
     </article>  
@@ -33,11 +36,22 @@ export default {
     SaveButton
   },
   data: () => ({
-    colorPalette: {title: "text"}
+    colorPalette: {
+        title: "Black",
+        swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"]
+      },
+    bgPalette: {
+        title: "Pastels",
+        swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
+    },
+    chars: ["A", "b", "C", "d", "E", "f", "G", "h"]
   }),    
   methods: {
-    applyColorPallete: function(palette) {
+    applyColorPalette: function(palette) {
       this.colorPalette = palette;
+    },
+    applyBgPalette: function(palette) {
+      this.bgPalette = palette;
     }
   }
 }
