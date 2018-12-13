@@ -29,8 +29,13 @@ export default {
         this.delta = this.currentChars.substring(this.previousChars.length)
         if (this.deltasArray.indexOf(this.delta) < 0) {
           this.deltasArray.push(this.delta)
+          this.$emit('applyCharChange', this.deltasArray)
+        }
+      } else if (this.currentChars.length < this.previousChars.length){
+        this.delta = this.previousChars.substring(this.currentChars.length)
+        if (this.currentChars.indexOf(this.delta) < 0) {
+          this.deltasArray.pop()
         }  
-        this.$emit('applyCharChange', this.deltasArray)
       }
     }
   }
