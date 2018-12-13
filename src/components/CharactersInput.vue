@@ -27,10 +27,9 @@ export default {
       this.currentChars = chars.replace(/\s/g,'')
       if (this.currentChars.length > this.previousChars.length) {
         this.delta = this.currentChars.substring(this.previousChars.length)
-        // if (this.deltasArray.indexof(this.delta) < 0) {
-        //   this.deltasArray.push(this.delta)
-        // }  
-        this.deltasArray.push(this.delta)
+        if (this.deltasArray.indexOf(this.delta) < 0) {
+          this.deltasArray.push(this.delta)
+        }  
         this.$emit('applyCharChange', this.deltasArray)
       }
     }
