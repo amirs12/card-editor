@@ -44,7 +44,7 @@ export default {
         title: "Pastels",
         swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
     },
-    characters: ["A", "b", "C", "d", "E", "f", "G", "h"]
+    characters: []
   }),    
   methods: {
     applyColorPalette: function(palette) {
@@ -54,7 +54,7 @@ export default {
       this.bgPalette = palette;
     },
     applyCharChange: function(chars) {
-      this.characters = chars.split('');
+      this.characters = chars;
     }
   }
 }
@@ -92,6 +92,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin-bottom: 26px;
+  z-index: 1;
 }
 
 .preview-box {

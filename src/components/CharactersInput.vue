@@ -3,9 +3,11 @@
     <input 
       class="input-field" 
       v-model="chars" 
-      type="text" 
+      type="text"
+      emoji
       placeholder="Type one character or emoji per card" 
       v-on:input="charsChangeHandler(chars)"
+      data-emojiable="true"
     >
   </div>
 </template>
@@ -14,11 +16,23 @@
 export default {
   name: 'CharactersInput',
   data: () => ({
-    chars: ''
+    currentChars: '',
+    previousChars: '',
+    delta: '',
+    deltasArray: []
   }),
   methods: {
-    charsChangeHandler(chars) {
-      this.$emit('applyCharChange', chars)
+    charsChangeHandler: function(chars) {
+      this.previousChars = this.currentChars
+      this.currentChars = chars.replace(/\s/g,'')
+      if (this.currentChars.length > this.previousChars.length) {
+        this.delta = this.currentChars.substring(this.previousChars.length)
+        // if (this.deltasArray.indexof(this.delta) < 0) {
+        //   this.deltasArray.push(this.delta)
+        // }  
+        this.deltasArray.push(this.delta)
+        this.$emit('applyCharChange', this.deltasArray)
+      }
     }
   }
 }

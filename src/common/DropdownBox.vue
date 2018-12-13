@@ -22,6 +22,7 @@
 
 <script>
 import Swatch from './Swatch.vue'
+import bgs from '../bgs.json'
 
 export default {
   name: 'DropdownBox',
@@ -34,32 +35,7 @@ export default {
       title: "Dark Greys",
       swatches: ["#111111", "#171717", "#222222", "#282828", "#333333"]
     },
-    palettes: [
-      {
-        title: "Light Neutrals",
-        swatches: ["#F2F2F2", "#DFDFDF", "#EDF0FF", "#FFF0E5", "#FFEEEE"]
-      },
-      {
-        title: "Light Greys",
-        swatches: ["#EDEDED", "#F1F1F1", "#F4F4F4", "#F7F7F7", "#FAFAFA"]
-      },
-      {
-        title: "Dark Greys",
-        swatches: ["#111111", "#171717", "#222222", "#282828", "#333333"]
-      },
-      {
-        title: "White",
-        swatches: ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"]
-      },
-      {
-        title: "Black",
-        swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"]
-      },
-      {
-        title: "Pastels",
-        swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
-      }
-    ]
+    palettes: bgs
   }),
   methods: {
     openDropOptions() {

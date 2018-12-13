@@ -30,8 +30,26 @@ export default {
     }
   },
   data: () => ({
-    
+
   })
+  // methods: {
+  //   checkContrast: function() {
+
+  //   }
+  // },
+  // computed: {
+  //   colorsMatrix: function () {
+  //     let validMatches = []
+  //     for (let color of colorPalette.swatches) {
+  //       for (let bg of bgPalette.swatches) {
+  //         if (checkContrast(color, bg) > 2) {
+  //           validMatches.push({ color: color, bg: bg})
+  //         }
+  //       }
+  //     }
+  //     return validMatches
+  //   }
+  // }
 }
 </script>
 
@@ -64,5 +82,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Risque', cursive;
 }
 </style>
