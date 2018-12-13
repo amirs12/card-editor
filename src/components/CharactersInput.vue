@@ -4,7 +4,8 @@
       class="input-field" 
       v-model="chars" 
       type="text" 
-      placeholder="Type one character or emoji per card"
+      placeholder="Type one character or emoji per card" 
+      v-on:input="charsChangeHandler(chars)"
     >
   </div>
 </template>
@@ -14,7 +15,12 @@ export default {
   name: 'CharactersInput',
   data: () => ({
     chars: ''
-  })
+  }),
+  methods: {
+    charsChangeHandler(chars) {
+      this.$emit('applyCharChange', chars)
+    }
+  }
 }
 </script>
 

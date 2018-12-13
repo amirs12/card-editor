@@ -2,14 +2,14 @@
   <div id="app" class="app">
     <article class="card-editor-box">
       <div class="type-title">Type to create cards</div>
-      <CharactersInput />
+      <CharactersInput @applyCharChange="applyCharChange($event)"/>
       <section class="menus-container">
         <ColorsMenu @applyColorPalette="applyColorPalette($event)" />
         <BgMenu @applyBgPalette="applyBgPalette($event)"/>
       </section>
       <section class="preview-box">
         <Cards 
-          :chars="chars" 
+          :chars="characters" 
           :colorPalette="colorPalette" 
           :bgPalette="bgPalette"
         />
@@ -44,7 +44,7 @@ export default {
         title: "Pastels",
         swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
     },
-    chars: ["A", "b", "C", "d", "E", "f", "G", "h"]
+    characters: ["A", "b", "C", "d", "E", "f", "G", "h"]
   }),    
   methods: {
     applyColorPalette: function(palette) {
@@ -52,6 +52,9 @@ export default {
     },
     applyBgPalette: function(palette) {
       this.bgPalette = palette;
+    },
+    applyCharChange: function(chars) {
+      this.characters = chars.split('');
     }
   }
 }
