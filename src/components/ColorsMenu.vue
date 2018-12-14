@@ -1,18 +1,25 @@
 <template>
   <div class="colors-menu">
     <div class="colors-menu-title">Colors</div>
-    <DropdownBox @applypalette="applyColorPalette($event)"/>
+    <DropdownBox 
+      @applypalette="applyColorPalette($event)"
+      :palettes="palettes"
+    />
   </div>
 </template>
 
 <script>
 import DropdownBox from '../common/DropdownBox.vue'
+import colors from '../../colors.json'
 
 export default {
   name: 'ColorsMenu',
   components: {
     DropdownBox
   },
+  data: () => ({
+    palettes: colors
+  }),
   methods: {
     applyColorPalette: function(palette) {
       this.$emit('applyColorPalette', palette);

@@ -57,13 +57,13 @@ export default {
     Success
   },
   data: () => ({
-    colorPalette: {
-        title: "Black",
-        swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"]
-      },
+    colorPalette: { 
+      title: "Core",
+      swatches: ["#112f41","#068587","#4fb99f","#f2b134","#ed553b"]
+    },
     bgPalette: {
-        title: "Pastels",
-        swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
+        title: "Light Neutrals",
+        swatches: ["#F2F2F2", "#DFDFDF", "#EDF0FF", "#FFF0E5", "#FFEEEE"]
     },
     characters: [],
     isSuccessOpen: false,
@@ -113,7 +113,7 @@ export default {
 }
 
 .type-title {
-  margin: 16px 0px;
+  margin: 17px 0px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: lighter;
@@ -125,7 +125,7 @@ export default {
   height: 24px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 26px;
+  margin-bottom: 28px;
   z-index: 1;
 }
 

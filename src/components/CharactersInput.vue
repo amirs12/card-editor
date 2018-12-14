@@ -55,13 +55,13 @@ export default {
 <style>
 .characters-input {
   width: 85%;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   border-bottom: solid 1px black;
 }
 
 .input-field {
   width: 98%;
-  height: 44px;
+  height: 40px;
   font-size: 20px;
 }
 </style>

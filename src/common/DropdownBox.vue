@@ -22,20 +22,22 @@
 
 <script>
 import Swatch from './Swatch.vue'
-import bgs from '../../colors.json'
+import colors from '../../colors.json'
 
 export default {
   name: 'DropdownBox',
   components: {
     Swatch
   },
+  props: {
+    palettes: {
+      required:true,
+      type:Array
+    }
+  },
   data: () => ({
     isMenuOpen: false,
-    selectedPalette: {
-        "title": "Light Neutrals",
-        "swatches": ["#F2F2F2", "#DFDFDF", "#EDF0FF", "#FFF0E5", "#FFEEEE"]
-    },
-    palettes: bgs
+    selectedPalette: colors[0]
   }),
   methods: {
     openDropOptions() {

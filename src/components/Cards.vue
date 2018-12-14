@@ -55,27 +55,26 @@ export default {
 
 <style>
 .cards {
-  width: 28%;
-  height: 40%;
+  width: 408px;
+  height: 240px;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
   list-style-type: none;
   padding: 0px;
   margin: 0px;
-  top: 200px;
+  top: 227px;
   position: fixed;
   overflow: scroll;
 }
 
 .card {
-  width: 21%;
+  width: 20%;
   height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 4%;
+  margin-right: 14px;
   border: solid 1px black;
   background-color: white;
 }
