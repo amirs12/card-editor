@@ -55,6 +55,8 @@ export default {
 
 <style>
 .cards {
+  width: 28%;
+  height: 40%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -62,6 +64,9 @@ export default {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
+  top: 200px;
+  position: fixed;
+  overflow: scroll;
 }
 
 .card {

@@ -28,7 +28,7 @@ export default {
 
 <style>
 .save-button {
-  width: 16%;
+  width: 17%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@ export default {
 
 .save-text {
   width: 100%;
-  height: 16px;
+  height: 15px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,5 +1,5 @@
 <template>
-  <div class="characters-input">
+  <form class="characters-input">
     <input 
       class="input-field" 
       v-model="chars" 
@@ -9,7 +9,7 @@
       v-on:input="charsChangeHandler(chars)"
       data-emojiable="true"
     >
-  </div>
+  </form>
 </template>
 
 <script>
@@ -19,13 +19,19 @@ export default {
     currentChars: '',
     previousChars: '',
     delta: '',
-    currentDeltas: [],
+    currentDeltas: []
 //    previousDeltas: []
   }),
   methods: {
     charsChangeHandler: function(chars) {
       this.previousChars = this.currentChars
       this.currentChars = chars.replace(/\s/g,'')
+      if (this.currentChars.length === 0) {
+        this.previousChars = ''
+        this.currentDeltas = []
+        this.delta = ''
+        this.$emit('applyCharChange', this.currentDeltas)
+      }
       if (this.currentChars.length > this.previousChars.length) {
         this.delta = this.currentChars.substring(this.previousChars.length)
         if (this.currentDeltas.indexOf(this.delta) < 0) {

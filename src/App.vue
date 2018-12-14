@@ -2,7 +2,10 @@
   <div id="app" class="app">
     <article class="card-editor-box">
       <div class="type-title">Type to create cards</div>
-      <CharactersInput @applyCharChange="applyCharChange($event)"/>
+      <CharactersInput 
+        @applyCharChange="applyCharChange($event)" 
+        :resetInput="resetOnSave"
+      />
       <section class="menus-container">
         <ColorsMenu @applyColorPalette="applyColorPalette($event)" />
         <BgMenu @applyBgPalette="applyBgPalette($event)"/>
@@ -28,7 +31,7 @@
       <SaveButton 
         class="save-container" 
         :chars="characters" 
-        v-if="characters.length>0"
+        v-if="characters.length>0 && isSuccessOpen === false"
         @successOpen="openSuccessBox($event)"
       />
     </article>  
@@ -63,7 +66,8 @@ export default {
         swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
     },
     characters: [],
-    isSuccessOpen: false
+    isSuccessOpen: false,
+    resetOnSave: false
   }),    
   methods: {
     applyColorPalette: function(palette) {
@@ -80,6 +84,9 @@ export default {
     },
     closeSuccessBox: function() {
       this.isSuccessOpen = false
+      this.resetOnSave = true
+      document.querySelector('.input-field').value = ''
+      this.characters = []
     }
   }
 }
@@ -136,6 +143,6 @@ export default {
 
 .save-container {
   position: relative;
-  top: 12%;
+  top: 56%;
 }
 </style>
