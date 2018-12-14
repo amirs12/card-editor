@@ -95,10 +95,11 @@ export default {
 <style>
 .app {
   width: 100%;
-  height: 500px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 55px;
 }
 
 .card-editor-box {

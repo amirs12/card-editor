@@ -22,7 +22,7 @@
 
 <script>
 import Swatch from './Swatch.vue'
-import bgs from '../bgs.json'
+import bgs from '../../colors.json'
 
 export default {
   name: 'DropdownBox',
@@ -69,7 +69,8 @@ export default {
 .selected-li {
   display: flex;
   justify-content: space-between;
-  padding-top: 6px;
+  align-items: center;
+  padding-top: 5px;
   padding-left: 10px;
   font-size: 9px;
   font-family: Arial, Helvetica, sans-serif;
@@ -82,6 +83,8 @@ export default {
 }
 
 .palettes {
+  width: 140px;
+  height: 40%;
   list-style-type: none;
   padding: 0px;
   margin: 0px;
@@ -89,6 +92,9 @@ export default {
   color: black;
   background-color: white;
   border: solid 1px black;
+  top: 172px;
+  position: fixed;
+  overflow: scroll;
 }
 
 .palettes>li {
@@ -98,7 +104,8 @@ export default {
 }
 
 .palette-title {
-  padding-top: 6px;
+  padding-top: 7px;
+  padding-bottom: 3px;
   padding-left: 10px;
 }
 </style>

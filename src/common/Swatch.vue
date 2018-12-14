@@ -22,7 +22,7 @@ export default {
 }
 
 .swatch-color {
-  height: 2px;
+  height: 4px;
   width: 100%;
   display: block;
 }
