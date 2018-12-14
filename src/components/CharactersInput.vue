@@ -19,7 +19,8 @@ export default {
     currentChars: '',
     previousChars: '',
     delta: '',
-    deltasArray: []
+    currentDeltas: [],
+//    previousDeltas: []
   }),
   methods: {
     charsChangeHandler: function(chars) {
@@ -27,14 +28,17 @@ export default {
       this.currentChars = chars.replace(/\s/g,'')
       if (this.currentChars.length > this.previousChars.length) {
         this.delta = this.currentChars.substring(this.previousChars.length)
-        if (this.deltasArray.indexOf(this.delta) < 0) {
-          this.deltasArray.push(this.delta)
-          this.$emit('applyCharChange', this.deltasArray)
+        if (this.currentDeltas.indexOf(this.delta) < 0) {
+          this.currentDeltas.push(this.delta)
+          this.$emit('applyCharChange', this.currentDeltas)
         }
       } else if (this.currentChars.length < this.previousChars.length){
         this.delta = this.previousChars.substring(this.currentChars.length)
         if (this.currentChars.indexOf(this.delta) < 0) {
-          this.deltasArray.pop()
+//          let filteredDeltas = this.currentDeltas.fliter(delta => (this.delta !== delta))
+//          this.currentDeltas = filteredDeltas
+          this.currentDeltas.pop()
+          this.$emit('applyCharChange', this.currentDeltas)
         }  
       }
     }
@@ -46,7 +50,7 @@ export default {
 .characters-input {
   width: 85%;
   margin-bottom: 20px;
-  border: solid 1px black;
+  border-bottom: solid 1px black;
 }
 
 .input-field {

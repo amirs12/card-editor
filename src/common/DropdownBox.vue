@@ -32,8 +32,8 @@ export default {
   data: () => ({
     isMenuOpen: false,
     selectedPalette: {
-      title: "Dark Greys",
-      swatches: ["#111111", "#171717", "#222222", "#282828", "#333333"]
+        "title": "Light Neutrals",
+        "swatches": ["#F2F2F2", "#DFDFDF", "#EDF0FF", "#FFF0E5", "#FFEEEE"]
     },
     palettes: bgs
   }),
@@ -71,7 +71,8 @@ export default {
   justify-content: space-between;
   padding-top: 6px;
   padding-left: 10px;
-  font-size: 10px;
+  font-size: 9px;
+  font-family: Arial, Helvetica, sans-serif;
   color: black;
 }
 
@@ -84,7 +85,7 @@ export default {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
-  font-size: 10px;
+  font-size: 9px;
   color: black;
   background-color: white;
   border: solid 1px black;

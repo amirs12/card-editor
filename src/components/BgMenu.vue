@@ -28,6 +28,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   color: white;
-  font-size: 10px;
+  font-size: 9px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 </style>

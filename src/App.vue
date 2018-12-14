@@ -7,14 +7,30 @@
         <ColorsMenu @applyColorPalette="applyColorPalette($event)" />
         <BgMenu @applyBgPalette="applyBgPalette($event)"/>
       </section>
+      <span 
+        class="no-preview"
+        v-if="characters.length<1"
+      >- No cards to preview yet -
+      </span>
+      <Success 
+        v-if="isSuccessOpen === true" 
+        :chars="characters"
+        @closeSuccess="closeSuccessBox($event)"
+      />
       <section class="preview-box">
         <Cards 
+          v-if="isSuccessOpen === false"
           :chars="characters" 
           :colorPalette="colorPalette" 
           :bgPalette="bgPalette"
         />
       </section>
-      <SaveButton />
+      <SaveButton 
+        class="save-container" 
+        :chars="characters" 
+        v-if="characters.length>0"
+        @successOpen="openSuccessBox($event)"
+      />
     </article>  
   </div>
 </template>
@@ -25,6 +41,7 @@ import ColorsMenu from './components/ColorsMenu.vue'
 import BgMenu from './components/BgMenu.vue'
 import Cards from './components/Cards.vue'
 import SaveButton from './components/SaveButton.vue'
+import Success from './components/Success.vue'
 
 export default {
   name: 'app',
@@ -33,7 +50,8 @@ export default {
     ColorsMenu,
     BgMenu,
     Cards,
-    SaveButton
+    SaveButton,
+    Success
   },
   data: () => ({
     colorPalette: {
@@ -44,7 +62,8 @@ export default {
         title: "Pastels",
         swatches: ["#FFF5F0", "#F5FAFF", "#E3D1E8", "#D1E8D3", "#FFFAE5"]
     },
-    characters: []
+    characters: [],
+    isSuccessOpen: false
   }),    
   methods: {
     applyColorPalette: function(palette) {
@@ -55,6 +74,12 @@ export default {
     },
     applyCharChange: function(chars) {
       this.characters = chars;
+    },
+    openSuccessBox: function() {
+      this.isSuccessOpen = true
+    },
+    closeSuccessBox: function() {
+      this.isSuccessOpen = false
     }
   }
 }
@@ -83,6 +108,7 @@ export default {
   margin: 16px 0px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
+  font-weight: lighter;
   color: white;
 }
 
@@ -95,7 +121,21 @@ export default {
   z-index: 1;
 }
 
+.no-preview {
+  color: rgb(158, 155, 155);
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: 10px;
+  position: relative;
+  top: 24%;
+}
+
 .preview-box {
   width: 85%;
+}
+
+.save-container {
+  position: relative;
+  top: 12%;
 }
 </style>
