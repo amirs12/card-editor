@@ -2,10 +2,7 @@
   <div id="app" class="app">
     <article class="card-editor-box">
       <div class="type-title">Type to create cards</div>
-      <CharactersInput 
-        @applyCharChange="applyCharChange($event)" 
-        :resetOnSave="resetOnSave"
-      />
+      <CharactersInput @applyCharChange="applyCharChange($event)" />
       <div class="menus-wrapper">
         <section class="menus-container">
           <ColorsMenu @applyColorPalette="applyColorPalette($event)" />
@@ -33,7 +30,6 @@
           :chars="characters" 
           :colorPalette="colorPalette" 
           :bgPalette="bgPalette" 
-          :resetOnSave="resetOnSave"
           @noValidsError="noValidsError($event)"
         />
       </section>
@@ -76,7 +72,6 @@ export default {
     },
     characters: [],
     isSuccessOpen: false,
-    resetOnSave: false,
     noValidsFlag: false
   }),
   methods: {
@@ -97,11 +92,9 @@ export default {
       localStorage.setItem('icon-colors', this.colorPalette.swatches)
       localStorage.setItem('bg-colors', this.bgPalette.swatches)
       this.isSuccessOpen = false
-      this.resetOnSave = true
       this.noValidsFlag = false
       document.querySelector('.input-field').value = ''
       this.characters = []
-      Object.assign(this.$data, this.$options.data())
     },
     noValidsError: function(noValids) {
       this.noValidsFlag = noValids

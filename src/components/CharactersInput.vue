@@ -5,7 +5,7 @@
       v-model="input" 
       type="text"
       placeholder="Type one character or emoji per card" 
-      v-on:input="charsChangeHandler(computedInput)"
+      v-on:input="charsChangeHandler(input)"
       data-emojiable="true"
     >
   </form>
@@ -14,12 +14,6 @@
 <script>
 export default {
   name: 'CharactersInput',
-  props: {
-    resetOnSave: {
-      required:true,
-      type:Boolean
-    }
-  },
   data: () => ({
     currentChars: '',
     previousChars: '',
@@ -27,17 +21,6 @@ export default {
     input: '',
     currentDeltas: []
   }),
-  computed: {
-    computedInput: function() {
-      if (this.resetOnSave === true) {
-        this.input = ''
-        Object.assign(this.$data, this.$options.data())
-        return ''
-      } else {
-        return this.input
-      }
-    }
-  },
   methods: {
     charsChangeHandler: function(input) {
       this.previousChars = this.currentChars
