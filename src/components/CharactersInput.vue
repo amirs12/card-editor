@@ -62,6 +62,18 @@ export default {
 .input-field {
   width: 98%;
   height: 40px;
-  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 21px;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.8);
+  letter-spacing: 8px;
+  padding-left: 8px;
+}
+
+.input-field::placeholder {
+  color: rgb(203, 203, 203, 0.8);
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 </style>
