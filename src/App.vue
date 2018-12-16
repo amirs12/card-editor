@@ -4,7 +4,7 @@
       <div class="type-title">Type to create cards</div>
       <CharactersInput 
         @applyCharChange="applyCharChange($event)" 
-        :resetInput="resetOnSave"
+        :resetOnSave="resetOnSave"
       />
       <div class="menus-wrapper">
         <section class="menus-container">
@@ -33,6 +33,7 @@
           :chars="characters" 
           :colorPalette="colorPalette" 
           :bgPalette="bgPalette" 
+          :resetOnSave="resetOnSave"
           @noValidsError="noValidsError($event)"
         />
       </section>
@@ -100,6 +101,7 @@ export default {
       this.noValidsFlag = false
       document.querySelector('.input-field').value = ''
       this.characters = []
+      Object.assign(this.$data, this.$options.data())
     },
     noValidsError: function(noValids) {
       this.noValidsFlag = noValids

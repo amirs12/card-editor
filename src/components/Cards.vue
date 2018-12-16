@@ -1,6 +1,6 @@
 <template>
   <ul class="cards">
-    <li v-for="(char, index) in chars" v-bind:key="index" class="card">
+    <li v-for="(char, index) in computedChars" v-bind:key="index" class="card">
       <div 
         class="card-design" 
         :style="{
@@ -18,6 +18,10 @@ import { hex } from 'wcag-contrast'
 export default {
   name: 'Cards',
   props:{
+    resetOnSave:{
+      required:true,
+      type:Boolean
+    },
     chars:{
       required:true,
       type:Array
@@ -39,12 +43,19 @@ export default {
   }),
   methods: {
     handleNoValids: function() {
-      // this.$emit('keepPreviousselected', palette)
       this.$emit('noValidsError', true)
       this.noValidsError = true
     }
   },
   computed: {
+    computedChars: function() {
+      if (this.resetOnSave === true) {
+        this.chars = []
+        return this.chars
+      } else {
+      return this.chars
+      }
+    },
     colorsMatrix: function() {
       let validColorMatches = []
       for (let shifter = 0; shifter < 5; shifter++) {
@@ -108,7 +119,7 @@ export default {
   font-family: 'Risque', cursive;
 }
 
-.card:active {
+.card:active, .card:hover {
   border: solid 1px red;
 }
 </style>

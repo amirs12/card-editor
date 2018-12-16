@@ -18,7 +18,6 @@ export default {
   }),
   methods: {
     saveCards: function() {
-      // console.log()
       this.shouldSuccessOpen = true
       this.$emit('successOpen', this.shouldSuccessOpen)
     }

@@ -42,33 +42,12 @@ export default {
   methods: {
     openDropOptions: function() {
       this.isMenuOpen = true;
-      // this.outsideClickListener()
     },
-    // closeDropOptions: function() {
-    //   this.isMenuOpen = false;
-    // }.bind(this),
     selectPalette(palette) {
       this.selectedPalette = palette;
       this.isMenuOpen = false;
       this.$emit('applypalette', palette)
-    },
-    // outsideClickListener: function() {
-    //   let bodyEl = document.querySelector('body')
-    //   bodyEl.addEventListener('click', this.checker)  
-    // }.bind(this),
-    // checker: function(event) {
-    //   prompt("Func called")
-    //   let bodyEl = document.querySelector('body')
-
-    //   if (event.target.closest('.palettes') === null){
-    //     // log.innerHTML = "you clicked outside the box"
-    //     this.closeDropOptions()
-    //     // this.isMenuOpen = false;
-    //     bodyEl.removeEventListener('click', this.checker)
-    //   } else {
-    //     // log.innerHTML = "you clicked inside the box"
-    //   }
-    // }.bind(this)
+    }
   }
 }
 </script>
