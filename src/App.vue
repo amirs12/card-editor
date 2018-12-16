@@ -62,8 +62,8 @@ export default {
       swatches: ["#112f41","#068587","#4fb99f","#f2b134","#ed553b"]
     },
     bgPalette: {
-        title: "Light Neutrals",
-        swatches: ["#F2F2F2", "#DFDFDF", "#EDF0FF", "#FFF0E5", "#FFEEEE"]
+      title: "Core",
+      swatches: ["#112f41","#068587","#4fb99f","#f2b134","#ed553b"]
     },
     characters: [],
     isSuccessOpen: false,

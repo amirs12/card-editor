@@ -11,6 +11,7 @@
 <script>
 import DropdownBox from '../common/DropdownBox.vue'
 import bgs from '../../bgs.json'
+import colors from '../../colors.json'
 
 export default {
   name: 'BgMenu',
@@ -18,7 +19,7 @@ export default {
     DropdownBox
   },
   data: () => ({
-    palettes: bgs
+    palettes: [...bgs, ...colors]
   }),
   methods: {
     applyBgPalette: function(palette) {
