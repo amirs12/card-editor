@@ -107,4 +107,8 @@ export default {
   justify-content: center;
   font-family: 'Risque', cursive;
 }
+
+.card:active {
+  border: solid 1px red;
+}
 </style>
