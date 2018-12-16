@@ -93,6 +93,8 @@ export default {
     },
     closeSuccessBox: function() {
       localStorage.setItem('crads', this.characters)
+      localStorage.setItem('icon-colors', this.colorPalette.swatches)
+      localStorage.setItem('bg-colors', this.bgPalette.swatches)
       this.isSuccessOpen = false
       this.resetOnSave = true
       this.noValidsFlag = false
@@ -107,13 +109,17 @@ export default {
 </script>
 
 <style>
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
 .app {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 55px;
 }
 
 .card-editor-box {
@@ -155,7 +161,9 @@ export default {
   display: flex;
   justify-content: center;
   color: white;
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: lighter;
+  letter-spacing: 1px;
   position: fixed;
   top: 206px;
   padding-bottom: 10px;

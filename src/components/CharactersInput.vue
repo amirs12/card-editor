@@ -2,11 +2,11 @@
   <form class="characters-input">
     <input 
       class="input-field" 
-      v-model="chars" 
+      v-model="input" 
       type="text"
       emoji
       placeholder="Type one character or emoji per card" 
-      v-on:input="charsChangeHandler(chars)"
+      v-on:input="charsChangeHandler(input)"
       data-emojiable="true"
     >
   </form>
@@ -15,17 +15,31 @@
 <script>
 export default {
   name: 'CharactersInput',
+  props: {
+    resetInput: {
+      required:true,
+      type:Boolean
+    }
+  },
   data: () => ({
     currentChars: '',
     previousChars: '',
     delta: '',
+    input: '',
     currentDeltas: []
-//    previousDeltas: []
   }),
+  computed: {
+    inputReset: function() {
+      if (this.resetInput === true) {
+        Object.assign(this.$data, this.$options.data())
+      }
+      return true
+    }
+  },
   methods: {
-    charsChangeHandler: function(chars) {
+    charsChangeHandler: function(input) {
       this.previousChars = this.currentChars
-      this.currentChars = chars.replace(/\s/g,'')
+      this.currentChars = input.replace(/\s/g,'')
       if (this.currentChars.length === 0) {
         this.previousChars = ''
         this.currentDeltas = []
@@ -41,8 +55,6 @@ export default {
       } else if (this.currentChars.length < this.previousChars.length){
         this.delta = this.previousChars.substring(this.currentChars.length)
         if (this.currentChars.indexOf(this.delta) < 0) {
-//          let filteredDeltas = this.currentDeltas.fliter(delta => (this.delta !== delta))
-//          this.currentDeltas = filteredDeltas
           this.currentDeltas.pop()
           this.$emit('applyCharChange', this.currentDeltas)
         }  
