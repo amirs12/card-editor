@@ -76,4 +76,8 @@ export default {
   font-weight: 400;
   letter-spacing: 1px;
 }
+
+.input-field:focus { 
+  background-color: rgb(240, 240, 240)
+}
 </style>
