@@ -77,7 +77,7 @@ export default {
     isSuccessOpen: false,
     resetOnSave: false,
     noValidsFlag: false
-  }),    
+  }),
   methods: {
     applyColorPalette: function(palette) {
       this.colorPalette = palette;
@@ -92,8 +92,10 @@ export default {
       this.isSuccessOpen = true
     },
     closeSuccessBox: function() {
+      localStorage.setItem('crads', this.characters)
       this.isSuccessOpen = false
       this.resetOnSave = true
+      this.noValidsFlag = false
       document.querySelector('.input-field').value = ''
       this.characters = []
     },
