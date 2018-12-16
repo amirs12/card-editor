@@ -31,6 +31,19 @@ export default {
       type:Object
     }
   },
+  data: () => ({
+    previousValids: [],
+    previousColors: [],
+    previousBgs: [],
+    noValidsError: false
+  }),
+  methods: {
+    handleNoValids: function() {
+      // this.$emit('keepPreviousselected', palette)
+      this.$emit('noValidsError', true)
+      this.noValidsError = true
+    }
+  },
   computed: {
     colorsMatrix: function() {
       let validColorMatches = []
@@ -44,7 +57,16 @@ export default {
           }
         }
       }
-      return validColorMatches
+      if (validColorMatches.length < 1) {
+        this.handleNoValids()
+        return this.previousValids
+      } else {
+        this.previousValids = validColorMatches
+        this.previousColors = this.colorPalette
+        this.previousBgs = this.bgPalette
+        this.$emit('noValidsError', false)
+        return validColorMatches
+      }
     }
   }
 }

@@ -6,10 +6,17 @@
         @applyCharChange="applyCharChange($event)" 
         :resetInput="resetOnSave"
       />
-      <section class="menus-container">
-        <ColorsMenu @applyColorPalette="applyColorPalette($event)" />
-        <BgMenu @applyBgPalette="applyBgPalette($event)"/>
-      </section>
+      <div class="menus-wrapper">
+        <section class="menus-container">
+          <ColorsMenu @applyColorPalette="applyColorPalette($event)" />
+          <BgMenu @applyBgPalette="applyBgPalette($event)"/>
+        </section>
+        <div 
+          v-if="noValidsFlag" 
+          class="no-valids-msg"
+        >Please select a different color group
+        </div>
+      </div>  
       <span 
         class="no-preview"
         v-if="characters.length<1"
@@ -25,7 +32,8 @@
           v-if="isSuccessOpen === false"
           :chars="characters" 
           :colorPalette="colorPalette" 
-          :bgPalette="bgPalette"
+          :bgPalette="bgPalette" 
+          @noValidsError="noValidsError($event)"
         />
       </section>
       <SaveButton 
@@ -67,7 +75,8 @@ export default {
     },
     characters: [],
     isSuccessOpen: false,
-    resetOnSave: false
+    resetOnSave: false,
+    noValidsFlag: false
   }),    
   methods: {
     applyColorPalette: function(palette) {
@@ -87,6 +96,9 @@ export default {
       this.resetOnSave = true
       document.querySelector('.input-field').value = ''
       this.characters = []
+    },
+    noValidsError: function(noValids) {
+      this.noValidsFlag = noValids
     }
   }
 }
@@ -120,13 +132,31 @@ export default {
   color: white;
 }
 
+.menus-wrapper {
+  width: 86%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 7px;
+}
+
 .menus-container {
-  width: 85%;
+  width: 100%;
   height: 24px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 28px;
   z-index: 1;
+}
+
+.no-valids-msg {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  position: fixed;
+  top: 206px;
+  padding-bottom: 10px;
 }
 
 .no-preview {
