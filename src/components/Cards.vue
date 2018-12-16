@@ -4,8 +4,8 @@
       <div 
         class="card-design" 
         :style="{
-          'background-color': bgPalette.swatches[index%5], 
-          'color': colorPalette.swatches[index%5]
+          'background-color': colorsMatrix[index%colorsMatrix.length].bg, 
+          'color': colorsMatrix[index%colorsMatrix.length].color
         }"
       >{{char}}</div>
     </li>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { hex } from 'wcag-contrast'
+
 export default {
   name: 'Cards',
   props:{
@@ -29,27 +31,22 @@ export default {
       type:Object
     }
   },
-  data: () => ({
-
-  })
-  // methods: {
-  //   checkContrast: function() {
-
-  //   }
-  // },
-  // computed: {
-  //   colorsMatrix: function () {
-  //     let validMatches = []
-  //     for (let color of colorPalette.swatches) {
-  //       for (let bg of bgPalette.swatches) {
-  //         if (checkContrast(color, bg) > 2) {
-  //           validMatches.push({ color: color, bg: bg})
-  //         }
-  //       }
-  //     }
-  //     return validMatches
-  //   }
-  // }
+  computed: {
+    colorsMatrix: function() {
+      let validColorMatches = []
+      for (let shifter = 0; shifter < 5; shifter++) {
+        for (let index = 0; index < 5; index++) {
+          if (hex(this.colorPalette.swatches[index], this.bgPalette.swatches[(index+shifter)%5]) > 2) {
+            validColorMatches.push({
+              color: this.colorPalette.swatches[index],
+              bg: this.bgPalette.swatches[(index+shifter)%5]
+            })
+          }
+        }
+      }
+      return validColorMatches
+    }
+  }
 }
 </script>
 
