@@ -92,7 +92,7 @@ export default {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
-  top: 227px;
+  top: 250px;
   position: fixed;
   overflow: scroll;
 }
