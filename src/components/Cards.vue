@@ -92,8 +92,8 @@ export default {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
-  top: 250px;
-  position: fixed;
+  top: 1px;
+  position: relative;
   overflow: scroll;
 }
 
